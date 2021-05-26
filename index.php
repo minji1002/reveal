@@ -382,14 +382,23 @@
             $sql = "SELECT * FROM re_message ORDER BY RE_idx DESC";
 
             $msg_result = mysqli_query($db_conn, $sql);
-            var_dump($msg_result);
+            
+            while($row = mysqli_fetch_array($msg_result)){
+              $name = $row['RE_name'];
+              $email = $row['RE_email'];
+              $subject = $row['RE_subject'];
+              $regist = $row['RE_reg'];
+              //echo $name;
           ?>
           <li class="msg-con">
-            <span>성덕선</span>
-            <span>1988@naver.com</span>
-            <span>덕선이로부터..</span>
-            <span>2021-05-25</span>
+            <span><?=$name?></span>
+            <span><?=$email?></span>
+            <span><?=$subject?></span>
+            <span><?=$regist?></span>
           </li>
+          <?php
+            }
+          ?>
         </ul>
       </div>
     </section>
